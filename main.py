@@ -1,5 +1,5 @@
 from stats import count_words, count_chars, sorting_function
-#import stats
+import sys
 
 def get_book_text(file_path):
     with open(file_path) as f:
@@ -8,8 +8,17 @@ def get_book_text(file_path):
     f.close()
     return contents
 
+def arg_check(cmd_list):
+    if len(cmd_list) == 2:
+        return cmd_list[1]
+    else:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
 def main():
-    fp = "books/frankenstein.txt"
+#    fp = "boot.dev/bookbot/books/frankenstein.txt"
+#    fp = sys.argv[1]
+    fp = arg_check(sys.argv)
     book = get_book_text(fp)
     print("============ BOOKBOT ============")
     print(f"Analyzing book found at {fp}...")
@@ -19,6 +28,6 @@ def main():
     characters = count_chars(book)
     sorting_function(characters)
     print("============= END ===============")
-    
+
 
 main()
