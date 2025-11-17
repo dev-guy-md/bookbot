@@ -6,12 +6,14 @@ def count_words(contents):
 def count_chars(contents):
     contents = contents.lower()
     my_dict = {}
+    alpha = "abcdefghijklmnopqrstuvwxyzôëêâæ"
     for char in contents:
-        try:
-            if my_dict[char]:
-                my_dict[char] += 1
-        except:
-                my_dict[char] = 1
+        if char in alpha:
+            try:
+                if my_dict[char]:
+                    my_dict[char] += 1
+            except:
+                    my_dict[char] = 1
     return my_dict
 
 def sort_on(items):
@@ -30,10 +32,14 @@ def sorting_function(word_dict):
         output.append({"char":key, "num":word_dict[key]})
     #print(d1)
     output.sort(reverse=True, key=sort_on)
-    for item, val in enumerate(output):
+    for item,val in enumerate(output):
         if output[item]["char"] == " ": pass
         else:
             print(f"{output[item]["char"]}: {output[item]["num"]}")
-    
+
     pass
+    
+
+    
+    
     
